@@ -1,14 +1,29 @@
 <!DOCTYPE html>
 <html>
-<head> 
+<head> <style type="text/css">
 
-<style type="text/css">
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:400,700');
+
+* {
+  box-sizing: border-box;
+}
 
 body {
+  padding: 0;
+  margin: 0;
+  font-family: 'Open Sans', sans-serif;
   -webkit-tap-highlight-color: transparent;
   -webkit-touch-callout: none;
-  margin: 0;
-  padding: 0;
+}
+
+.card {
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
+}
+
+.card__header,
+.card__content {
+  padding: 1rem;
+
 }
 
 .form label,
@@ -23,95 +38,63 @@ body {
   flex-wrap: wrap;
   justify-content: space-around;
   align-items: stretch;
+  padding-top: 1rem;
 }
 
 .product-item {
 	
     width: 40rem;
-    max-width: 95%;
+	max-width: 95%;
+	padding-top: 1rem;
 }
+
 .span {
 	font-weight: bold
+}
+
+.droptarget {
+  float: left; 
+  width: 250px; 
+  height: 200px;
+  margin: 15px;
+  padding: 10px;
+  border: 1px solid #aaaaaa;
 }
 
 </style></head>
 <!--<body onLoad="loadXMLDoc()">-->
 <body>
 <form action="#">
-   <!-- <details>
-        <summary>Customer</summary>
-        <ul>
-            <li>
-				<details>
-					<summary>
-						<input type="checkbox" id="custCountry" name="customer" onChange="myFunction()"  value="Country" autocomplete="off">Country </input>
-					</summary>
-							<ul><li>
-								<input type="checkbox" id="custState" name="customer" onChange="myFunction()" value="Customer state" autocomplete="off">Customer state</input>
-							</li><li>
-								<input type="checkbox" id="custDirstict" name="customer" onChange="myFunction()" value = 'Customer Dirstict' autocomplete="off">Customer Dirstict</input>
-							</li>
-							<li>
-								<input type="checkbox" id="custArea" name="customer" onChange="myFunction()"  value = 'Customer area' autocomplete="off">Customer area</input>
-							</li>
-							</ul>
-                </details>
-			</li>
-			<li>
-                    <input type="checkbox" id="custPhone" name="customer" onChange="myFunction()" value= 'Sales Phone' >Sales Phone</input>
-            </li>
-		</ul>    
-    </details> -->
-	
+  	
 <div class="grid">
         <article class="card product-item">
-	 
-<details><summary>ZPPSReagentCompliance</summary><ul>
+			
+<details open="open"><summary>ZPPSReagentCompliance</summary><ul>
 	
-	<details>
+	<details open="open">
 	<summary>DIMENSIONS</summary><ul>
+    
+    <li ondragstart="dragStart(event)" draggable="true" id="Area">Area</li>
+    
+    <li ondragstart="dragStart(event)" draggable="true" id="AreaDesc">AreaDesc</li>
+    
+    <li ondragstart="dragStart(event)" draggable="true" id="AreaManagerName">AreaManagerName</li>
 	
-	<li><span class="content"> Area </span><br>
-	<input type = "checkbox" id="Area" name ="checkboxDimension" onChange="checkboxDimensionFun()" value="Area" autocomplete="off">Dimension</input>
-	<input type = "checkbox" id="Area" name ="checkboxMeasure" onChange="checkboxMeasureFun()" value="Area" autocomplete="off">Measures</input>
-	<input type = "checkbox" id="Area" name ="checkboxFilter" onChange="checkboxFilterFun()" value="Area" autocomplete="off">Filter</input>
-	</li>
-	
-	<li>AreaDesc<br>
-	<input type = "checkbox" id="AreaDesc" name ="checkboxDimension" onChange="checkboxDimensionFun()" value="AreaDesc" autocomplete="off">Dimension</input>
-	<input type = "checkbox" id="AreaDesc" name ="checkboxMeasure" onChange="checkboxMeasureFun()" value="AreaDesc" autocomplete="off">Measures</input>
-	<input type = "checkbox" id="AreaDesc" name ="checkboxFilter" onChange="checkboxFilterFun()" value="AreaDesc" autocomplete="off">Filter</input>
-	</li>
-	
-	<li>AreaManagerName<br>
-	<input type = "checkbox" id="AreaManagerName" name ="checkboxDimension" onChange="checkboxDimensionFun()" value="AreaManagerName" autocomplete="off">Dimension</input>
-	<input type = "checkbox" id="AreaManagerName" name ="checkboxMeasure" onChange="checkboxMeasureFun()" value="AreaManagerName" autocomplete="off">Measures</input>
-	<input type = "checkbox" id="AreaManagerName" name ="checkboxFilter" onChange="checkboxFilterFun()" value="AreaManagerName" autocomplete="off">Filter</input>
-	</li>
+	<li ondragstart="dragStart(event)" draggable="true" id="AreaManagerNameTest">AreaManagerNameTest</li>
 	
 	</ul>
 	</details>
 	
 	
 	<details><summary>MEASURES</summary><ul>
+
+    <li ondragstart="dragStart(event)" draggable="true" id="BIllingNetPlanRateUSD">BIllingNetPlanRateUSD</li>
+    
+    <li ondragstart="dragStart(event)" draggable="true" id="BillingNetTranCurr">BillingNetTranCurr</li>
+    
+    <li ondragstart="dragStart(event)" draggable="true" id="BillingNetTranCurr">BillingNetTranCurr</li>
 	
-	<li>BIllingNetPlanRateUSD<br>
-	<input type = "checkbox" id="BIllingNetPlanRateUSD" name ="checkboxDimension" onChange="checkboxDimensionFun()" value="BIllingNetPlanRateUSD" autocomplete="off">Dimension</input>
-	<input type = "checkbox" id="BIllingNetPlanRateUSD" name ="checkboxMeasure" onChange="checkboxMeasureFun()" value="BIllingNetPlanRateUSD" autocomplete="off">Measures</input>
-	<input type = "checkbox" id="BIllingNetPlanRateUSD" name ="checkboxFilter" onChange="checkboxFilterFun()" value="BIllingNetPlanRateUSD" autocomplete="off">Filter</input>
-	</li>
-	
-	<li>BillingNetTranCurr<br>
-	<input type = "checkbox" id="BillingNetTranCurr" name ="checkboxDimension" onChange="checkboxDimensionFun()" value="BillingNetTranCurr" autocomplete="off">Dimension</input>
-	<input type = "checkbox" id="BillingNetTranCurr" name ="checkboxMeasure" onChange="checkboxMeasureFun()" value="BillingNetTranCurr" autocomplete="off">Measures</input>
-	<input type = "checkbox" id="BillingNetTranCurr" name ="checkboxFilter" onChange="checkboxFilterFun()" value="BillingNetTranCurr" autocomplete="off">Filter</input>
-	</li>
-	
-	<li>BillingNetTranCurr<br>
-	<input type = "checkbox" id="BillingNetTranCurr" name ="checkboxDimension" onChange="checkboxDimensionFun()" value="BillingNetTranCurr" autocomplete="off">Dimension</input>
-	<input type = "checkbox" id="BillingNetTranCurr" name ="checkboxMeasure" onChange="checkboxMeasureFun()" value="BillingNetTranCurr" autocomplete="off">Measures</input>
-	<input type = "checkbox" id="BillingNetTranCurr" name ="checkboxFilter" onChange="checkboxFilterFun()" value="BillingNetTranCurr" autocomplete="off">Filter</input>
-	</li>
+	<li ondragstart="dragStart(event)" draggable="true" id="BillingNetTranCurrTest">BillingNetTranCurrTest</li>
 	
 	
 	</ul>
@@ -119,157 +102,223 @@ body {
 	
 	<details><summary>TIME_DIMENSIONS</summary><ul>
 	
-	<li>BillingDate<br>
-	<input type = "checkbox" id="billingdate" name ="checkboxDimension" onChange="checkboxDimensionFun()" value="BillingDate" autocomplete="off">Dimension</input>
-	<input type = "checkbox" id="billingdate" name ="checkboxMeasure" onChange="checkboxMeasureFun()" value="BillingDate" autocomplete="off">Measures</input>
-	<input type = "checkbox" id="billingdate" name ="checkboxFilter" onChange="checkboxFilterFun()" value="BillingDate" autocomplete="off">Filter</input>
-	</li>
-	
-	<li>CYContractEndDate <br>
-	<input type = "checkbox" id="cycontractenddate" name ="checkboxDimension" onChange="checkboxDimensionFun()" value="cycontractenddate" autocomplete="off">Dimension</input>
-	<input type = "checkbox" id="cycontractenddate" name ="checkboxMeasure" onChange="checkboxMeasureFun()" value="cycontractenddate" autocomplete="off">Measures</input>
-	<input type = "checkbox" id="cycontractenddate" name ="checkboxFilter" onChange="checkboxFilterFun()" value="cycontractenddate" autocomplete="off">Filter</input>
-	</li>
-	
-	<li>CYContractStartDate<br>
-	<input type = "checkbox" id="CYContractStartDate" name ="checkboxDimension" onChange="checkboxDimensionFun()" value="CYContractStartDate" autocomplete="off">Dimension</input>
-	<input type = "checkbox" id="CYContractStartDate" name ="checkboxMeasure" onChange="checkboxMeasureFun()" value="CYContractStartDate" autocomplete="off">Measures</input>
-	<input type = "checkbox" id="CYContractStartDate" name ="checkboxFilter" onChange="checkboxFilterFun()" value="CYContractStartDate" autocomplete="off">Filter</input>
-	</li>
-	
-	<li>ContractChangeDate<br>
-	<input type = "checkbox" id="ContractChangeDate" name ="checkboxDimension" onChange="checkboxDimensionFun()" value="ContractChangeDate" autocomplete="off">Dimension</input>
-	<input type = "checkbox" id="ContractChangeDate" name ="checkboxMeasure" onChange="checkboxMeasureFun()" value="ContractChangeDate" autocomplete="off">Measures</input>
-	<input type = "checkbox" id="ContractChangeDate" name ="checkboxFilter" onChange="checkboxFilterFun()" value="ContractChangeDate" autocomplete="off">Filter</input>
-	</li>
-	
-	
+    <li ondragstart="dragStart(event)" draggable="true" id="BillingDate">BillingDate</li>
+    
+    <li ondragstart="dragStart(event)" draggable="true" id="CYContractEndDate">CYContractEndDate</li>
+
+    <li ondragstart="dragStart(event)" draggable="true" id="CYContractEndDate">CYContractStartDate</li>
+
+    <li ondragstart="dragStart(event)" draggable="true" id="CYContractEndDate">ContractChangeDate</li>
+
+    <li ondragstart="dragStart(event)" draggable="true" id="CYContractEndDate">CYContractEndOtherDate</li>
+
 	</details></li></ul>
 	
 	</details> 
 
 </article>
 
-<article class="card product-item">
-<ul><li>
-Selected Dimensions
-	<input type="hidden" id="textDimension" />
-	<ul><div id="textDimensionDiv">
-	</div></ul>
-</li><br>
-<li>
+<article id ="displayContentId" class="card product-item">
+    <div id='Dimension' class="droptarget" ondrop="dropDim(event)" ondragover="allowDrop(event)" >
+        <labe >Dimension</label>
+        <p id='labelDimensionText'></p>
+    </div>
 
-Selected labels <input type="hidden" id="textMeasure" />
-	<ul><div id="textMeasureDiv">
-	</div></ul>
-</li><br>
-<li>
-Selected Filters
-	<input type="hidden" id="textFilter" />
-	<ul><div id="textFilterDiv">
-	</div></ul>
-</li>
-</ul>
+    <div id='Measures' class="droptarget" ondrop="dropMes(event)" ondragover="allowDrop(event)">
+        <label>Measures</label>
+        <p id='labelMeasuresext'></p>
+    </div>
+
+    <div id='Filters' class="droptarget" ondrop="dropFil(event)" ondragover="allowDrop(event)">
+        <label>Filters</label>
+        <p id='labelFiltersText'></p>
+    </div>
+
 </article>
-
+<br><br>
 <article class="card product-item">
+    
+    <!-- <textarea id='DimensionText' aria-valuetext="Test"></textarea> -->
 
-<input type="submit" onClick="myAction()" value="Submit">
-
+    <input type="button" id="btn" value="Download" /> 
 </article>
 </div>
  
-
 </form>
 
+</body>
 </html>
 
-
 <script>
-  //var customer = "";  customer = document.forms[0];
-  document.getElementById("textDimension").value = "";
-  document.getElementById("textMeasure").value = "";
-  document.getElementById("textFilter").value = "";
+    var dimension = [];
+    var measures = [];
+    var filters = [];
 
-  var txt = "";
-  
-function checkboxDimensionFun() {  
-	var textDimension = [];
-  var checkboxes = document.getElementsByName('checkboxDimension');
-  for (var checkbox of checkboxes) {
-    if (checkbox.checked && textDimension.indexOf(checkbox.value) < 0)
-		//document.body.append(checkbox.value + ' ');
-		textDimension.push(checkbox.value);
-	}
-	document.getElementById("textDimension").value = textDimension;
-	document.getElementById("textDimensionDiv").innerHTML =  textDimension;
-}
-function checkboxMeasureFun() {
-  var textMeasure = [];
-  var checkboxes = document.getElementsByName('checkboxMeasure');
-  for (var checkbox of checkboxes) {
-    if (checkbox.checked)
-		//document.body.append(checkbox.value + ' ');
-		textMeasure.push(checkbox.value);
-  }
-	document.getElementById("textMeasure").value = textMeasure;
-	document.getElementById("textMeasureDiv").innerHTML =  textMeasure;
-}
-function checkboxFilterFun() { 
-  var textFilter = [];
-  var checkboxes = document.getElementsByName('checkboxFilter');
-  for (var checkbox of checkboxes) {
-    if (checkbox.checked)
-      //document.body.append(checkbox.value + ' ');
-		textFilter.push(checkbox.value);
-  }
-  document.getElementById("textFilter").value = textFilter;
-  document.getElementById("textFilterDiv").innerHTML = textFilter;
-}
-
-  
-function myAction() {
-	alert(txt);
-}
-
-  </script>
-  
-  
-  
-
-<script>
-/*function loadXMLDoc() {
-  var xmlhttp = new XMLHttpRequest();
-  xmlhttp.onreadystatechange = function() {
-    if (this.readyState == 4 && this.status == 200) {
-      myFunction(this);
+    function dragStart(event) {
+      event.dataTransfer.setData("Text", event.target.id);
+      console.log(event.target.id)
     }
-  };
-  xmlhttp.open("GET", "xmlFile.xml", true);
-  xmlhttp.send();
-  myFunction(xmlhttp);
-}
-function myFunction(xml) {
-  var i;
-  var xmlDoc = xml.responseXML;
-  var xmlData = "<Summary> Country Details </Summary>";
-  var checkBoxStart = "<input type='checkbox' name='customer' onChange='myFunction()' value='Customer state' autocomplete='off'>Customer state</input>";
-  var checkBoxEnd = "</input> ";
-  var ulStart = "<ul>";
-  var ulEnd = "</ul>";
-  
-  xmlData = ulStart;
-  var x = xmlDoc.getElementsByTagName("Person");
-  for (i = 0; i <x.length; i++) { 
-    xmlData += checkBoxStart +"<li>" +
-    x[i].getElementsByTagName("ARTIST")[0].childNodes[0].nodeValue +
-	checkBoxEnd + "</li>" +
-	
-   // x[i].getElementsByTagName("TITLE")[0].childNodes[0].nodeValue +
-    //"</td></tr>";
-  }
-  xmlData = ulEnd;
-  document.getElementById("xmlData").innerHTML = table;
-}*/
+    
+    function allowDrop(event) {
+      event.preventDefault();
+    }
+    
+    // function drop(event) {
+    //   event.preventDefault();
+    //   var data = event.dataTransfer.getData("Text");
+    //   var divData = event.target.appendChild(document.getElementById(data).cloneNode(true));
+    //   //Dimension.push( event.target.appendChild(document.getElementById(data).cloneNode(true)));
+    // }
+
+    //Dimensions
+    function dropDim(event) {
+      event.preventDefault();
+      var data = event.dataTransfer.getData("Text");
+      //event.target.appendChild(document.getElementById(data).cloneNode(true));// display drable items
+      
+      //check if the selected item already avaiable in Measures?
+      if(measures.includes(data))
+        alert('Cant move the same elements in Dimesions and measures');
+      else
+        dimension.push(data);
+        dimension = getUnique(dimension);
+
+        document.getElementById("labelDimensionText").innerHTML = "<table>"+ corssMarkAppend(dimension).join(" ") +"</table>";
+    }
+
+    function corssMarkAppend(array){
+        var crossMarkApp = [];
+       // var buttonAddstart = "<input type='submit' onClick='itemRemove(this, "+array+", "+ labelId + ");' value=";
+        var buttonAddstart = "<tr><td><input type='button' onclick='deleteRowFunction(this, "+array+");'  value=X id=";
+        var buttonAddend = "</input></td></tr>";
+        // Loop through array values
+        for(var value of array){
+            if(crossMarkApp.indexOf(value) === -1){
+                crossMarkApp.push(buttonAddstart+value+"> "+value+buttonAddend);
+            }
+        }
+        return crossMarkApp;
+    }
+
+    function deleteRowFunction(obj, array) {
+      // event.target will be the input element.
+      var td = event.target.parentNode; 
+      var tr = td.parentNode; // the row to be removed
+      tr.parentNode.removeChild(tr);
+      dimension = dimension.filter(e => e !== obj.id);
+    }
+
+    //Measures
+    function dropMes(event) {
+      event.preventDefault();
+      var data = event.dataTransfer.getData("Text");
+      //event.target.appendChild(document.getElementById(data).cloneNode(true));// display drable items
+      if(dimension.includes(data))
+        alert('Cant move the same elements in Dimesions and measures');
+      else
+        measures.push(data);
+      measures = getUnique(measures);//Duplicate removal 
+      //document.getElementById("labelMeasuresext").innerHTML = measures.join(" ");
+      document.getElementById("labelMeasuresext").innerHTML = "<table>"+ corssMarkAppendM(measures).join(" ") +"</table>";
+    }
+
+    function corssMarkAppendM(array){
+        var crossMarkApp = [];
+       // var buttonAddstart = "<input type='submit' onClick='itemRemove(this, "+array+", "+ labelId + ");' value=";
+        var buttonAddstart = "<tr><td><input type='button' onclick='deleteRowFunctionM(this, "+array+");'  value=X id=";
+        var buttonAddend = "</input></td></tr>";
+        // Loop through array values
+        for(var value of array){
+            if(crossMarkApp.indexOf(value) === -1){
+                crossMarkApp.push(buttonAddstart+value+"> "+value+buttonAddend);
+            }
+        }
+        return crossMarkApp;
+    }
+
+    function deleteRowFunctionM(obj, array) {
+      // event.target will be the input element.
+      var td = event.target.parentNode; 
+      var tr = td.parentNode; // the row to be removed
+      tr.parentNode.removeChild(tr);
+      measures = measures.filter(e => e !== obj.id);
+    }
+
+
+    //filters
+    function dropFil(event) {
+      event.preventDefault();
+      var data = event.dataTransfer.getData("Text");
+      //event.target.appendChild(document.getElementById(data).cloneNode(true));// display drable items
+      filters.push(data);
+      filters = getUnique(filters);//Duplicate removal 
+      //document.getElementById("labelFiltersText").innerHTML = filters.join(" ");
+      document.getElementById("labelFiltersText").innerHTML = "<table>"+ corssMarkAppendF(filters).join(" ") +"</table>";
+    }
+
+    
+    function corssMarkAppendF(array){
+        var crossMarkApp = [];
+       // var buttonAddstart = "<input type='submit' onClick='itemRemove(this, "+array+", "+ labelId + ");' value=";
+        var buttonAddstart = "<tr><td><input type='button' onclick='deleteRowFunctionF(this, "+array+");'  value=X id=";
+        var buttonAddend = "</input></td></tr>";
+        // Loop through array values
+        for(var value of array){
+            if(crossMarkApp.indexOf(value) === -1){
+                crossMarkApp.push(buttonAddstart+value+"> "+value+buttonAddend);
+            }
+        }
+        return crossMarkApp;
+    }
+
+    function deleteRowFunctionF(obj, array) {
+      // event.target will be the input element.
+      var td = event.target.parentNode; 
+      var tr = td.parentNode; // the row to be removed
+      tr.parentNode.removeChild(tr);
+      filters = filters.filter(e => e !== obj.id);
+    }
+
+    function getUnique(array){
+        var uniqueArray = [];
+        // Loop through array values
+        for(var value of array){
+            if(uniqueArray.indexOf(value) === -1){
+                uniqueArray.push(value);
+            }
+        }
+        return uniqueArray;
+    }
+    var xml = "";
+    function printXml() {
+            xml = '<?xml version="1.0" encoding="UTF-8"?><Root><Classes>\n';
+            xml += "<Class Dimensions='" + dimension + "'>\n";
+            xml += "</Class>\n";
+			xml += "<Class Measures='" + measures + "'>\n";
+            xml += "</Class>\n";
+			xml += "<Class Filters='" + filters + "'>\n";
+            xml += "</Class>\n";
+            xml += '</Classes></Root>';
+            window.alert(xml);
+    }
+
+function download(file, text) { 
+  var element = document.createElement('a'); 
+  element.setAttribute('href', 'data:text/plain;charset=utf-8, ' 
+                       + encodeURIComponent(text)); 
+  element.setAttribute('download', file); 
+  document.body.appendChild(element); 
+  element.click(); 
+  document.body.removeChild(element); 
+} 
+
+// Start file download. 
+document.getElementById("btn").addEventListener("click", function() { 
+    var filename = "myFile.xml"; 
+    printXml();
+    download(filename, xml); 
+}, false); 
+
+
 </script>
 
