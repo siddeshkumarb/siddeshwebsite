@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html>
+<head> 
+
+<style type="text/css">
+
+body {
+  -webkit-tap-highlight-color: transparent;
+  -webkit-touch-callout: none;
+  margin: 0;
+  padding: 0;
+}
+
+.form label,
+.form input {
+    display: block;
+    width: 100%;
+    margin-bottom: 0.25rem;
+}
+	
+.grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-items: stretch;
+}
+
+.product-item {
+	
+    width: 40rem;
+    max-width: 95%;
+}
+.span {
+	font-weight: bold
+}
+
+</style></head>
+<!--<body onLoad="loadXMLDoc()">-->
+<body>
+<form action="#">
+   <!-- <details>
+        <summary>Customer</summary>
+        <ul>
+            <li>
+				<details>
+					<summary>
+						<input type="checkbox" id="custCountry" name="customer" onChange="myFunction()"  value="Country" autocomplete="off">Country </input>
+					</summary>
+							<ul><li>
+								<input type="checkbox" id="custState" name="customer" onChange="myFunction()" value="Customer state" autocomplete="off">Customer state</input>
+							</li><li>
+								<input type="checkbox" id="custDirstict" name="customer" onChange="myFunction()" value = 'Customer Dirstict' autocomplete="off">Customer Dirstict</input>
+							</li>
+							<li>
+								<input type="checkbox" id="custArea" name="customer" onChange="myFunction()"  value = 'Customer area' autocomplete="off">Customer area</input>
+							</li>
+							</ul>
+                </details>
+			</li>
+			<li>
+                    <input type="checkbox" id="custPhone" name="customer" onChange="myFunction()" value= 'Sales Phone' >Sales Phone</input>
+            </li>
+		</ul>    
+    </details> -->
+	
+<div class="grid">
+        <article class="card product-item">
+	 
+<details><summary>ZPPSReagentCompliance</summary><ul>
+	
+	<details>
+	<summary>DIMENSIONS</summary><ul>
+	
+	<li><span class="content"> Area </span><br>
+	<input type = "checkbox" id="Area" name ="checkboxDimension" onChange="checkboxDimensionFun()" value="Area" autocomplete="off">Dimension</input>
+	<input type = "checkbox" id="Area" name ="checkboxMeasure" onChange="checkboxMeasureFun()" value="Area" autocomplete="off">Measures</input>
+	<input type = "checkbox" id="Area" name ="checkboxFilter" onChange="checkboxFilterFun()" value="Area" autocomplete="off">Filter</input>
+	</li>
+	
+	<li>AreaDesc<br>
+	<input type = "checkbox" id="AreaDesc" name ="checkboxDimension" onChange="checkboxDimensionFun()" value="AreaDesc" autocomplete="off">Dimension</input>
+	<input type = "checkbox" id="AreaDesc" name ="checkboxMeasure" onChange="checkboxMeasureFun()" value="AreaDesc" autocomplete="off">Measures</input>
+	<input type = "checkbox" id="AreaDesc" name ="checkboxFilter" onChange="checkboxFilterFun()" value="AreaDesc" autocomplete="off">Filter</input>
+	</li>
+	
+	<li>AreaManagerName<br>
+	<input type = "checkbox" id="AreaManagerName" name ="checkboxDimension" onChange="checkboxDimensionFun()" value="AreaManagerName" autocomplete="off">Dimension</input>
+	<input type = "checkbox" id="AreaManagerName" name ="checkboxMeasure" onChange="checkboxMeasureFun()" value="AreaManagerName" autocomplete="off">Measures</input>
+	<input type = "checkbox" id="AreaManagerName" name ="checkboxFilter" onChange="checkboxFilterFun()" value="AreaManagerName" autocomplete="off">Filter</input>
+	</li>
+	
+	</ul>
+	</details>
+	
+	
+	<details><summary>MEASURES</summary><ul>
+	
+	<li>BIllingNetPlanRateUSD<br>
+	<input type = "checkbox" id="BIllingNetPlanRateUSD" name ="checkboxDimension" onChange="checkboxDimensionFun()" value="BIllingNetPlanRateUSD" autocomplete="off">Dimension</input>
+	<input type = "checkbox" id="BIllingNetPlanRateUSD" name ="checkboxMeasure" onChange="checkboxMeasureFun()" value="BIllingNetPlanRateUSD" autocomplete="off">Measures</input>
+	<input type = "checkbox" id="BIllingNetPlanRateUSD" name ="checkboxFilter" onChange="checkboxFilterFun()" value="BIllingNetPlanRateUSD" autocomplete="off">Filter</input>
+	</li>
+	
+	<li>BillingNetTranCurr<br>
+	<input type = "checkbox" id="BillingNetTranCurr" name ="checkboxDimension" onChange="checkboxDimensionFun()" value="BillingNetTranCurr" autocomplete="off">Dimension</input>
+	<input type = "checkbox" id="BillingNetTranCurr" name ="checkboxMeasure" onChange="checkboxMeasureFun()" value="BillingNetTranCurr" autocomplete="off">Measures</input>
+	<input type = "checkbox" id="BillingNetTranCurr" name ="checkboxFilter" onChange="checkboxFilterFun()" value="BillingNetTranCurr" autocomplete="off">Filter</input>
+	</li>
+	
+	<li>BillingNetTranCurr<br>
+	<input type = "checkbox" id="BillingNetTranCurr" name ="checkboxDimension" onChange="checkboxDimensionFun()" value="BillingNetTranCurr" autocomplete="off">Dimension</input>
+	<input type = "checkbox" id="BillingNetTranCurr" name ="checkboxMeasure" onChange="checkboxMeasureFun()" value="BillingNetTranCurr" autocomplete="off">Measures</input>
+	<input type = "checkbox" id="BillingNetTranCurr" name ="checkboxFilter" onChange="checkboxFilterFun()" value="BillingNetTranCurr" autocomplete="off">Filter</input>
+	</li>
+	
+	
+	</ul>
+	</details>
+	
+	<details><summary>TIME_DIMENSIONS</summary><ul>
+	
+	<li>BillingDate<br>
+	<input type = "checkbox" id="billingdate" name ="checkboxDimension" onChange="checkboxDimensionFun()" value="BillingDate" autocomplete="off">Dimension</input>
+	<input type = "checkbox" id="billingdate" name ="checkboxMeasure" onChange="checkboxMeasureFun()" value="BillingDate" autocomplete="off">Measures</input>
+	<input type = "checkbox" id="billingdate" name ="checkboxFilter" onChange="checkboxFilterFun()" value="BillingDate" autocomplete="off">Filter</input>
+	</li>
+	
+	<li>CYContractEndDate <br>
+	<input type = "checkbox" id="cycontractenddate" name ="checkboxDimension" onChange="checkboxDimensionFun()" value="cycontractenddate" autocomplete="off">Dimension</input>
+	<input type = "checkbox" id="cycontractenddate" name ="checkboxMeasure" onChange="checkboxMeasureFun()" value="cycontractenddate" autocomplete="off">Measures</input>
+	<input type = "checkbox" id="cycontractenddate" name ="checkboxFilter" onChange="checkboxFilterFun()" value="cycontractenddate" autocomplete="off">Filter</input>
+	</li>
+	
+	<li>CYContractStartDate<br>
+	<input type = "checkbox" id="CYContractStartDate" name ="checkboxDimension" onChange="checkboxDimensionFun()" value="CYContractStartDate" autocomplete="off">Dimension</input>
+	<input type = "checkbox" id="CYContractStartDate" name ="checkboxMeasure" onChange="checkboxMeasureFun()" value="CYContractStartDate" autocomplete="off">Measures</input>
+	<input type = "checkbox" id="CYContractStartDate" name ="checkboxFilter" onChange="checkboxFilterFun()" value="CYContractStartDate" autocomplete="off">Filter</input>
+	</li>
+	
+	<li>ContractChangeDate<br>
+	<input type = "checkbox" id="ContractChangeDate" name ="checkboxDimension" onChange="checkboxDimensionFun()" value="ContractChangeDate" autocomplete="off">Dimension</input>
+	<input type = "checkbox" id="ContractChangeDate" name ="checkboxMeasure" onChange="checkboxMeasureFun()" value="ContractChangeDate" autocomplete="off">Measures</input>
+	<input type = "checkbox" id="ContractChangeDate" name ="checkboxFilter" onChange="checkboxFilterFun()" value="ContractChangeDate" autocomplete="off">Filter</input>
+	</li>
+	
+	
+	</details></li></ul>
+	
+	</details> 
+
+</article>
+
+<article class="card product-item">
+<ul><li>
+Selected Dimensions
+	<input type="hidden" id="textDimension" />
+	<ul><div id="textDimensionDiv">
+	</div></ul>
+</li><br>
+<li>
+
+Selected labels <input type="hidden" id="textMeasure" />
+	<ul><div id="textMeasureDiv">
+	</div></ul>
+</li><br>
+<li>
+Selected Filters
+	<input type="hidden" id="textFilter" />
+	<ul><div id="textFilterDiv">
+	</div></ul>
+</li>
+</ul>
+</article>
+
+<article class="card product-item">
+
+<input type="submit" onClick="myAction()" value="Submit">
+
+</article>
+</div>
+ 
+
+</form>
+
+</html>
+
+
+<script>
+  //var customer = "";  customer = document.forms[0];
+  document.getElementById("textDimension").value = "";
+  document.getElementById("textMeasure").value = "";
+  document.getElementById("textFilter").value = "";
+
+  var txt = "";
+  
+function checkboxDimensionFun() {  
+	var textDimension = [];
+  var checkboxes = document.getElementsByName('checkboxDimension');
+  for (var checkbox of checkboxes) {
+    if (checkbox.checked && textDimension.indexOf(checkbox.value) < 0)
+		//document.body.append(checkbox.value + ' ');
+		textDimension.push(checkbox.value);
+	}
+	document.getElementById("textDimension").value = textDimension;
+	document.getElementById("textDimensionDiv").innerHTML =  textDimension;
+}
+function checkboxMeasureFun() {
+  var textMeasure = [];
+  var checkboxes = document.getElementsByName('checkboxMeasure');
+  for (var checkbox of checkboxes) {
+    if (checkbox.checked)
+		//document.body.append(checkbox.value + ' ');
+		textMeasure.push(checkbox.value);
+  }
+	document.getElementById("textMeasure").value = textMeasure;
+	document.getElementById("textMeasureDiv").innerHTML =  textMeasure;
+}
+function checkboxFilterFun() { 
+  var textFilter = [];
+  var checkboxes = document.getElementsByName('checkboxFilter');
+  for (var checkbox of checkboxes) {
+    if (checkbox.checked)
+      //document.body.append(checkbox.value + ' ');
+		textFilter.push(checkbox.value);
+  }
+  document.getElementById("textFilter").value = textFilter;
+  document.getElementById("textFilterDiv").innerHTML = textFilter;
+}
+
+  
+function myAction() {
+	alert(txt);
+}
+
+  </script>
+  
+  
+  
+
+<script>
+/*function loadXMLDoc() {
+  var xmlhttp = new XMLHttpRequest();
+  xmlhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+      myFunction(this);
+    }
+  };
+  xmlhttp.open("GET", "xmlFile.xml", true);
+  xmlhttp.send();
+  myFunction(xmlhttp);
+}
+function myFunction(xml) {
+  var i;
+  var xmlDoc = xml.responseXML;
+  var xmlData = "<Summary> Country Details </Summary>";
+  var checkBoxStart = "<input type='checkbox' name='customer' onChange='myFunction()' value='Customer state' autocomplete='off'>Customer state</input>";
+  var checkBoxEnd = "</input> ";
+  var ulStart = "<ul>";
+  var ulEnd = "</ul>";
+  
+  xmlData = ulStart;
+  var x = xmlDoc.getElementsByTagName("Person");
+  for (i = 0; i <x.length; i++) { 
+    xmlData += checkBoxStart +"<li>" +
+    x[i].getElementsByTagName("ARTIST")[0].childNodes[0].nodeValue +
+	checkBoxEnd + "</li>" +
+	
+   // x[i].getElementsByTagName("TITLE")[0].childNodes[0].nodeValue +
+    //"</td></tr>";
+  }
+  xmlData = ulEnd;
+  document.getElementById("xmlData").innerHTML = table;
+}*/
+</script>
