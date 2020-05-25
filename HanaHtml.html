@@ -280,8 +280,8 @@ document.getElementById("FHtml").innerHTML = dataTemp;
     function dropMes(event) {
       event.preventDefault();
       var data = event.dataTransfer.getData("Text");
-      if( (dataDimInput.includes(data)) )
-        alert('Cant move Dimension elements to Measures!');
+      if( (dataDimInput.includes(data)) ||  (dataTimInput.includes(data)))
+        alert('Cant move other elements to Measures!');
       else
         measures.push(data);
       measures = getUnique(measures);
