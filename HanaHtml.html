@@ -248,7 +248,7 @@ document.getElementById("FHtml").innerHTML = dataTemp;
       var data = event.dataTransfer.getData("Text");
      
       if( (dataMeaInput.includes(data)) )
-        alert('Cant move Other elements to Dimensions!');
+        alert('Cant move Measure elements to Dimensions!');
       else
         dimension.push(data);
         dimension = getUnique(dimension);
@@ -281,7 +281,7 @@ document.getElementById("FHtml").innerHTML = dataTemp;
       event.preventDefault();
       var data = event.dataTransfer.getData("Text");
       if( (dataDimInput.includes(data)) )
-        alert('Cant move Other elements to Measures!');
+        alert('Cant move Dimension elements to Measures!');
       else
         measures.push(data);
       measures = getUnique(measures);
@@ -314,7 +314,7 @@ document.getElementById("FHtml").innerHTML = dataTemp;
       event.preventDefault();
       var data = event.dataTransfer.getData("Text");
       if( (dataMeaInput.includes(data)) )
-        alert('Cant move Other elements to Filters!');
+        alert('Cant move Measure elements to Filters!');
       else
         filters.push(data);
       filters = getUnique(filters);
