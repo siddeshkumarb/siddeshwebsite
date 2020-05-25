@@ -4,20 +4,18 @@
 
 @import url('https://fonts.googleapis.com/css?family=Open+Sans:400,700');
 
-* {
-  box-sizing: border-box;
-}
+
 
 body {
-  padding: 0;
-  margin: 0;
-  font-family: 'Open Sans', sans-serif;
+  padding: 2;
+  margin: 2;
+  font-family: 'Calibri Light', sans-serif;
   -webkit-tap-highlight-color: transparent;
   -webkit-touch-callout: none;
 }
 
 .card {
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
+  box-shadow: 0 2px 8px darkblue;
 }
 
 .card__header,
@@ -39,17 +37,23 @@ body {
   justify-content: space-around;
   align-items: stretch;
   padding-top: 1rem;
+  padding-bottom: 2re;
 }
 
 .product-item {
-	
-    width: 40rem;
-	max-width: 95%;
+	width: 40rem;
+	max-width: 90%;
 	padding-top: 1rem;
+  overflow-y: scroll;
+  overflow-x: scroll;
+  max-height: 450px;
 }
 
 .span {
-	font-weight: bold
+	font-weight: bold;
+  text-align: center; 
+  text-size-adjust: 10px;
+  padding-left: 0; 
 }
 
 .droptarget {
@@ -58,6 +62,8 @@ body {
   height: 200px;
   margin: 15px;
   padding: 10px;
+  overflow-y: scroll;
+  overflow-x: scroll;
   border: 1px solid #aaaaaa;
 }
 
@@ -68,97 +74,161 @@ body {
   	
 <div class="grid">
         <article class="card product-item">
-			
-<details open="open"><summary>ZPPSReagentCompliance</summary><ul>
+          <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+          <input type='text' id='searchinput'/>
+          <div id='search-results'></div>
+<details open="open">
+  <summary><b> ZPPSReagentCompliance</b></summary>
+  
+  <ul>
+    <details open="open">
+    <summary><strong>DIMENSIONS</strong></summary><ul>
+      <div id ="DimHtml"> </div>
+    </ul>
+    </details>
 	
-	<details open="open">
-	<summary>DIMENSIONS</summary><ul>
-    
-    <li ondragstart="dragStart(event)" draggable="true" id="Area">Area</li>
-    
-    <li ondragstart="dragStart(event)" draggable="true" id="AreaDesc">AreaDesc</li>
-    
-    <li ondragstart="dragStart(event)" draggable="true" id="AreaManagerName">AreaManagerName</li>
+    <details open="open"><summary><strong>MEASURES</strong></summary>
+      <ul>
+        <div id ="MHtml"> </div>
+      </ul>
+    </details>
 	
-	<li ondragstart="dragStart(event)" draggable="true" id="AreaManagerNameTest">AreaManagerNameTest</li>
-	
-	</ul>
-	</details>
-	
-	
-	<details><summary>MEASURES</summary><ul>
-
-    <li ondragstart="dragStart(event)" draggable="true" id="BIllingNetPlanRateUSD">BIllingNetPlanRateUSD</li>
-    
-    <li ondragstart="dragStart(event)" draggable="true" id="BillingNetTranCurr">BillingNetTranCurr</li>
-    
-    <li ondragstart="dragStart(event)" draggable="true" id="BillingNetTranCurr">BillingNetTranCurr</li>
-	
-	<li ondragstart="dragStart(event)" draggable="true" id="BillingNetTranCurrTest">BillingNetTranCurrTest</li>
-	
-	
-	</ul>
-	</details>
-	
-	<details><summary>TIME_DIMENSIONS</summary><ul>
-	
-    <li ondragstart="dragStart(event)" draggable="true" id="BillingDate">BillingDate</li>
-    
-    <li ondragstart="dragStart(event)" draggable="true" id="CYContractEndDate">CYContractEndDate</li>
-
-    <li ondragstart="dragStart(event)" draggable="true" id="CYContractEndDate">CYContractStartDate</li>
-
-    <li ondragstart="dragStart(event)" draggable="true" id="CYContractEndDate">ContractChangeDate</li>
-
-    <li ondragstart="dragStart(event)" draggable="true" id="CYContractEndDate">CYContractEndOtherDate</li>
-
-	</details></li></ul>
-	
+  <details open="open"><summary><strong>TIME_DIMENSIONS</strong></summary>
+    <ul>
+      <div id ="FHtml"> </div>
+    </ul>
+  </ul>
 	</details> 
 
 </article>
 
 <article id ="displayContentId" class="card product-item">
+<b> Drag and Drop here</b><br>
+
     <div id='Dimension' class="droptarget" ondrop="dropDim(event)" ondragover="allowDrop(event)" >
-        <labe >Dimension</label>
+      <strong>  <u> Dimension</u></strong>
         <p id='labelDimensionText'></p>
     </div>
 
     <div id='Measures' class="droptarget" ondrop="dropMes(event)" ondragover="allowDrop(event)">
-        <label>Measures</label>
+        <strong> <u>Measures</u></strong>
         <p id='labelMeasuresext'></p>
     </div>
 
     <div id='Filters' class="droptarget" ondrop="dropFil(event)" ondragover="allowDrop(event)">
-        <label>Filters</label>
+        <strong><u>Filters</u></strong>
         <p id='labelFiltersText'></p>
     </div>
 
 </article>
 <br><br>
-<article class="card product-item">
-    
-    <!-- <textarea id='DimensionText' aria-valuetext="Test"></textarea> -->
-
-    <input type="button" id="btn" value="Download" /> 
+<article class="card"><br>
+    <input type="button" id="btn" value="Download XML" /> <br>
 </article>
 </div>
- 
+
+
 </form>
 
 </body>
 </html>
 
+
+
 <script>
+//Search functionality
+  var dataDimInput = [];
+  var dataMeaInput = [];
+  var dataTimInput = [];
+  var text = "<AllDetails><Class>" +
+  "<DIMENSIONS>Area,AreaDesc,AreaManagerName,AreaManagerNameTest </DIMENSIONS>" +
+  "<MEASURES>BIllingNetPlanRateUSD, BillingNetTranCurr,BillingNetTranCurrs, BillingNetTranCurrTest</MEASURES>" +
+  "<TIME_DIMENSIONS>BillingDate,CYContractEndDate,CYContractStartDate,ContractChangeDate, CYContractEndOtherDate, CYContractEndOtherDate1,CYContractEndOtherDate2,CYContractEndOtherDate3,CYContractEndOtherDate4,CYContractEndOtherDate5,CYContractEndOtherDate6 </TIME_DIMENSIONS>" +
+  "</Class></AllDetails>";
+    //Load data from XML to HTML
+    var parser, xmlDoc;
+    parser = new DOMParser();
+    xmlDoc = parser.parseFromString(text,"text/xml");
+
+function loadDefaultValuesToDetails(){
+  dataDimInput = (xmlDoc.getElementsByTagName("DIMENSIONS")[0].childNodes[0].nodeValue).split(',');
+  dataMeaInput = (xmlDoc.getElementsByTagName("MEASURES")[0].childNodes[0].nodeValue).split(',');
+  dataTimInput = (xmlDoc.getElementsByTagName("TIME_DIMENSIONS")[0].childNodes[0].nodeValue).split(',');
+}
+
+  loadDefaultValuesToDetails();
+  loadDetails();
+
+  searchinput.oninput = function() {
+    loadDefaultValuesToDetails();
+    var searchFor = $("#searchinput").val();
+    if(searchFor){
+      var searchedValue = dataDimInput.filter(function(item){
+            return eval('/'+searchFor.toUpperCase()+'/').test(item.toUpperCase());
+      });
+      dataDimInput = searchedValue;
+
+      var searchedValue = dataMeaInput.filter(function(item){
+            return eval('/'+searchFor.toUpperCase()+'/').test(item.toUpperCase());
+      });
+      dataMeaInput = searchedValue;
+
+      var searchedValue = dataTimInput.filter(function(item){
+            return eval('/'+searchFor.toUpperCase()+'/').test(item.toUpperCase());
+      });
+      dataTimInput = searchedValue;
+    
+      if(dataDimInput.length <= 0 && dataMeaInput.length <= 0 && dataTimInput.length <= 0)
+      {
+          $("#search-results").html("no results");
+          loadDefaultValuesToDetails();
+      }
+      else
+      {
+        $("#search-results").html("");
+        loadDetails(); //$("#search-results").html(dataDimInput);
+      }
+    }
+    else
+    {
+      loadDefaultValuesToDetails();
+      loadDetails(); 
+    }
+};
+// $("#search-input").on("keyup", search);
+
+//load data from XML to list view
+function loadDetails(){
+
+dataTemp = "";
+   for (i = 0; i < dataDimInput.length; i++) {
+      dataTemp += "<li ondragstart='dragStart(event)' draggable='true' id='"+ dataDimInput[i]+ "'>"+dataDimInput[i];
+    }
+document.getElementById("DimHtml").innerHTML = dataTemp;
+
+dataTemp = "";
+   for (i = 0; i < dataMeaInput.length; i++) {
+      dataTemp += "<li ondragstart='dragStart(event)' draggable='true' id='"+ dataMeaInput[i]+ "'>"+dataMeaInput[i];
+    }
+document.getElementById("MHtml").innerHTML = dataTemp;
+
+dataTemp = "";
+   for (i = 0; i < dataTimInput.length; i++) {
+      dataTemp += "<li ondragstart='dragStart(event)' draggable='true' id='"+ dataTimInput[i]+ "'>"+dataTimInput[i];
+    }
+document.getElementById("FHtml").innerHTML = dataTemp;
+}
+</script>
+
+<script>
+  // for drag and drop functionality
     var dimension = [];
     var measures = [];
     var filters = [];
 
     function dragStart(event) {
       event.dataTransfer.setData("Text", event.target.id);
-      console.log(event.target.id)
     }
-    
     function allowDrop(event) {
       event.preventDefault();
     }
@@ -174,11 +244,9 @@ body {
     function dropDim(event) {
       event.preventDefault();
       var data = event.dataTransfer.getData("Text");
-      //event.target.appendChild(document.getElementById(data).cloneNode(true));// display drable items
-      
-      //check if the selected item already avaiable in Measures?
-      if(measures.includes(data))
-        alert('Cant move the same elements in Dimesions and measures');
+     
+      if( (dataMeaInput.includes(data)) || (dataTimInput.includes(data)))
+        alert('Cant move Other elements to Dimensions!');
       else
         dimension.push(data);
         dimension = getUnique(dimension);
@@ -188,8 +256,7 @@ body {
 
     function corssMarkAppend(array){
         var crossMarkApp = [];
-       // var buttonAddstart = "<input type='submit' onClick='itemRemove(this, "+array+", "+ labelId + ");' value=";
-        var buttonAddstart = "<tr><td><input type='button' onclick='deleteRowFunction(this, "+array+");'  value=X id=";
+       var buttonAddstart = "<tr><td><input type='button' title='Remove this item from the list.' onclick='deleteRowFunction(this, "+array+");'  value=X id=";
         var buttonAddend = "</input></td></tr>";
         // Loop through array values
         for(var value of array){
@@ -201,7 +268,6 @@ body {
     }
 
     function deleteRowFunction(obj, array) {
-      // event.target will be the input element.
       var td = event.target.parentNode; 
       var tr = td.parentNode; // the row to be removed
       tr.parentNode.removeChild(tr);
@@ -212,20 +278,17 @@ body {
     function dropMes(event) {
       event.preventDefault();
       var data = event.dataTransfer.getData("Text");
-      //event.target.appendChild(document.getElementById(data).cloneNode(true));// display drable items
-      if(dimension.includes(data))
-        alert('Cant move the same elements in Dimesions and measures');
+      if( (dataDimInput.includes(data)) || (dataTimInput.includes(data)))
+        alert('Cant move Other elements to Measures!');
       else
         measures.push(data);
-      measures = getUnique(measures);//Duplicate removal 
-      //document.getElementById("labelMeasuresext").innerHTML = measures.join(" ");
+      measures = getUnique(measures);
       document.getElementById("labelMeasuresext").innerHTML = "<table>"+ corssMarkAppendM(measures).join(" ") +"</table>";
     }
 
     function corssMarkAppendM(array){
         var crossMarkApp = [];
-       // var buttonAddstart = "<input type='submit' onClick='itemRemove(this, "+array+", "+ labelId + ");' value=";
-        var buttonAddstart = "<tr><td><input type='button' onclick='deleteRowFunctionM(this, "+array+");'  value=X id=";
+        var buttonAddstart = "<tr><td><input type='button' title='Remove this item from the list.' onclick='deleteRowFunctionM(this, "+array+");'  value=X id=";
         var buttonAddend = "</input></td></tr>";
         // Loop through array values
         for(var value of array){
@@ -237,7 +300,6 @@ body {
     }
 
     function deleteRowFunctionM(obj, array) {
-      // event.target will be the input element.
       var td = event.target.parentNode; 
       var tr = td.parentNode; // the row to be removed
       tr.parentNode.removeChild(tr);
@@ -249,18 +311,16 @@ body {
     function dropFil(event) {
       event.preventDefault();
       var data = event.dataTransfer.getData("Text");
-      //event.target.appendChild(document.getElementById(data).cloneNode(true));// display drable items
+      
       filters.push(data);
-      filters = getUnique(filters);//Duplicate removal 
-      //document.getElementById("labelFiltersText").innerHTML = filters.join(" ");
+      filters = getUnique(filters);
       document.getElementById("labelFiltersText").innerHTML = "<table>"+ corssMarkAppendF(filters).join(" ") +"</table>";
     }
 
     
     function corssMarkAppendF(array){
         var crossMarkApp = [];
-       // var buttonAddstart = "<input type='submit' onClick='itemRemove(this, "+array+", "+ labelId + ");' value=";
-        var buttonAddstart = "<tr><td><input type='button' onclick='deleteRowFunctionF(this, "+array+");'  value=X id=";
+        var buttonAddstart = "<tr><td><input type='button' title='Remove this item from the list.' onclick='deleteRowFunctionF(this, "+array+");'  value=X id=";
         var buttonAddend = "</input></td></tr>";
         // Loop through array values
         for(var value of array){
@@ -299,7 +359,7 @@ body {
 			xml += "<Class Filters='" + filters + "'>\n";
             xml += "</Class>\n";
             xml += '</Classes></Root>';
-            //window.alert(xml);
+            window.alert(xml);
     }
 
 function download(file, text) { 
@@ -321,4 +381,7 @@ document.getElementById("btn").addEventListener("click", function() {
 
 
 </script>
+
+
+
 
