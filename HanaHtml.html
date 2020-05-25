@@ -247,7 +247,7 @@ document.getElementById("FHtml").innerHTML = dataTemp;
       event.preventDefault();
       var data = event.dataTransfer.getData("Text");
      
-      if( (dataMeaInput.includes(data)) || (dataTimInput.includes(data)))
+      if( (dataMeaInput.includes(data)) )
         alert('Cant move Other elements to Dimensions!');
       else
         dimension.push(data);
@@ -280,7 +280,7 @@ document.getElementById("FHtml").innerHTML = dataTemp;
     function dropMes(event) {
       event.preventDefault();
       var data = event.dataTransfer.getData("Text");
-      if( (dataDimInput.includes(data)) || (dataTimInput.includes(data)))
+      if( (dataDimInput.includes(data)) )
         alert('Cant move Other elements to Measures!');
       else
         measures.push(data);
@@ -313,8 +313,10 @@ document.getElementById("FHtml").innerHTML = dataTemp;
     function dropFil(event) {
       event.preventDefault();
       var data = event.dataTransfer.getData("Text");
-      
-      filters.push(data);
+      if( (dataMeaInput.includes(data)) )
+        alert('Cant move Other elements to Filters!');
+      else
+        filters.push(data);
       filters = getUnique(filters);
       document.getElementById("labelFiltersText").innerHTML = "<table>"+ corssMarkAppendF(filters).join(" ") +"</table>";
     }
